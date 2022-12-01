@@ -16,30 +16,40 @@ podman build . -t local-registry/app-b
 
 ### Run
 
+Create a custom network
+
+```
+docker network create apps
+```
 #### app_a
 
 ```
-podman run -p 127.0.0.1:8080:5000/tcp localhost/local-registry/app-a:latest
+podman run --network=apps --rm --name app-a localhost/local-registry/app-a:latest
 ```
 
 #### app_b
 
 ```
-podman run -p 127.0.0.1:8081:5001/tcp localhost/local-registry/app-b:latest
+podman run  --network=apps --rm --name app-b localhost/local-registry/app-b:latest
 ```
 
 ### Test
-
-#### app_a
+Create an interactive curl container:
 
 ```
-❯ curl 127.0.0.1:8080/hello
+podman run --rm -it  --entrypoint sh --network apps curlimages/curl
+```
+
+Now run the example commands:
+
+```
+curl app-a:5000/hello
 Hello there⏎
 ```
 
-#### app_b
-
 ```
-❯ curl -X POST -d 'token=mytoken' http://127.0.0.1:8081/auth
-density⏎
+curl -X POST -H 'Authorization: mytoken' http://app-a:5000/jobs
+Jobs:
+Title: Devops
+Description: Awesome
 ```
