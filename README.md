@@ -25,7 +25,7 @@ podman run -p 127.0.0.1:8080:5000/tcp localhost/local-registry/app-a:latest
 #### app_b
 
 ```
-podman run -p 127.0.0.1:8080:5001/tcp localhost/local-registry/app-b:latest
+podman run -p 127.0.0.1:8081:5001/tcp localhost/local-registry/app-b:latest
 ```
 
 ### Test
@@ -40,6 +40,6 @@ Hello there⏎
 #### app_b
 
 ```
-❯ curl -X POST -d 'token=mytoken' http://127.0.0.1:8080/auth
+❯ curl -X POST -d 'token=mytoken' http://127.0.0.1:8081/auth
 density⏎
 ```
