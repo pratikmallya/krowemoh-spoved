@@ -1,23 +1,24 @@
 from flask import Flask, request
 import requests
+
 application = Flask(__name__)
 
 
-@application.route('/hello')
+@application.route("/hello")
 def hello():
-    return 'Hello there'
+    return "Hello there"
 
 
-@application.route('/jobs', methods=['POST'])
+@application.route("/jobs", methods=["POST"])
 def jobs():
-    token = request.headers['Authorization']
+    token = request.headers["Authorization"]
     data = {"token": token}
-    result = requests.post('http://0.0.0.0:5001/auth', data=data).content
+    result = requests.post("http://0.0.0.0:5001/auth", data=data).content
     if result == "density":
-        return 'Jobs:\nTitle: Devops\nDescription: Awesome\n'
+        return "Jobs:\nTitle: Devops\nDescription: Awesome\n"
     else:
-        return 'fail'
+        return "fail"
 
 
 if __name__ == "__main__":
-    application.run(host='0.0.0.0', port=5000)
+    application.run(host="0.0.0.0", port=5000)
