@@ -4,7 +4,8 @@ metadata:
   name: app-a
 spec:
   selector:
-    app.kubernetes.io/name: app-a
+    app: app-a
+  type: LoadBalancer
   ports:
     - protocol: TCP
       port: 5000
