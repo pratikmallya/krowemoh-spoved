@@ -4,14 +4,14 @@
 
 ```
 cd app_a
-podman build . -t local-registry/app-a
+docker build . -t local-registry/app-a
 ```
 
 #### app_b
 
 ```
 cd app_b
-podman build . -t local-registry/app-b
+docker build . -t local-registry/app-b
 ```
 
 ### Run
@@ -24,20 +24,20 @@ docker network create apps
 #### app_a
 
 ```
-podman run --network=apps --rm --name app-a localhost/local-registry/app-a:latest
+docker run --network=apps --rm --name app-a localhost/local-registry/app-a:latest
 ```
 
 #### app_b
 
 ```
-podman run  --network=apps --rm --name app-b localhost/local-registry/app-b:latest
+docker run  --network=apps --rm --name app-b localhost/local-registry/app-b:latest
 ```
 
 ### Test
 Create an interactive curl container:
 
 ```
-podman run --rm -it  --entrypoint sh --network apps curlimages/curl
+docker run --rm -it  --entrypoint sh --network apps curlimages/curl
 ```
 
 Now run the example commands:
