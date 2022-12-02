@@ -17,5 +17,6 @@ spec:
       containers:
       - name: app-b
         image: local-registry/app-b:latest
+        imagePullPolicy: Never # this is required for running locally in docker desktop
         ports:
         - containerPort: 5001
