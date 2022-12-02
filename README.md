@@ -56,7 +56,7 @@ Description: Awesome
 
 ### Kubernetes
 
-Using docker desktop's kubernetes engine.
+Using [docker desktop's](https://docs.docker.com/desktop/kubernetes/) kubernetes engine.
 
 Deploy:
 
