@@ -53,3 +53,28 @@ Jobs:
 Title: Devops
 Description: Awesome
 ```
+
+### Kubernetes
+
+Using docker desktop's kubernetes engine.
+
+Deploy:
+
+```
+kubectl apply -f ./apps/app_a/kubernetes/
+kubectl apply -f ./apps/app_b/kubernetes/
+```
+
+Test:
+```
+❯ curl http://localhost:5000/hello
+Hello there⏎
+```
+and 
+
+```
+❯ curl -X POST -H 'Authorization: mytoken' http://localhost:5000/jobs
+Jobs:
+Title: Devops
+Description: Awesome
+```
